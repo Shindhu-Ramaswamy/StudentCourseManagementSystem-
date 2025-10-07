@@ -1,0 +1,36 @@
+--STUDENTS TABLE--
+
+
+CREATE TABLE STUDENTS (
+  student_id NUMBER(5) PRIMARY KEY,
+  first_name VARCHAR2(50),
+  last_name VARCHAR2(50),
+  email VARCHAR2(100),
+  phone VARCHAR2(15),
+  dob DATE
+);
+
+
+--COURSES TABLE--
+
+
+CREATE TABLE COURSES (
+  course_id NUMBER(5) PRIMARY KEY,
+  course_name VARCHAR2(100),
+  credits NUMBER(2),
+  department VARCHAR2(50)
+);
+
+
+--ENROLLMENTS TABLE--
+
+
+CREATE TABLE ENROLLMENTS (
+  enroll_id NUMBER(5) PRIMARY KEY,
+  student_id NUMBER(5),
+  course_id NUMBER(5),
+  enroll_date DATE,
+  grade VARCHAR2(2),
+  FOREIGN KEY (student_id) REFERENCES STUDENTS(student_id),
+  FOREIGN KEY (course_id) REFERENCES COURSES(course_id)
+);
